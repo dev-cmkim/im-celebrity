@@ -1,0 +1,110 @@
+$border-color: #E1E3E9;
+$bg-color: #F7F7FA;
+
+body {
+    width:100%;
+    height: 100%;
+    margin:0;
+    padding: 0;
+    position: relative;
+    background: $bg-color;
+  } 
+  .header {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    line-height: 60px;
+    background: #0067FF;
+    color: #FFFFFF;
+    text-align: left;
+    padding: 0 30px;
+
+    .header_txt {
+    font-style: normal;
+    font-weight: 700;
+    }
+    .line {
+        width: 1px;
+        height: 14px;
+        opacity: 0.4;
+        background: #FFFFFF;
+        margin: 23px 7px;
+    }
+    .header_tit {
+        font-weight: 400;
+        font-size: 14px;
+    }
+  }
+  .section {
+    height: 726px;
+    margin: 40px 30px;
+    border: 1px solid #E1E3E9;
+    border-radius: 10px;
+    background-color: #fff;
+    .top_menu {
+        display: flex;
+        line-height: 60px;
+        border-bottom: 1px solid $border-color;
+        text-align: left;
+        div {
+            width: 202px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            padding: 18px 0;
+            border-right: 1px solid $border-color;
+            color:#9DA1A8;;
+        }
+        .active {
+            background-color:#F0F3FF;
+            color: #0067FF;
+        }
+    }
+  }
+  //리뷰어 리스트
+  .user_list_box {
+    border: 1px solid $border-color;
+    margin: 20px 40px 39.5px 20px; 
+    ul {
+        height: 525px;
+        overflow: scroll;
+        list-style: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: scroll;
+        font-size: 14px;
+        li {
+            display: grid;
+            grid-template-columns: 0.5fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr 2fr 10fr 1fr 1fr 2fr 2fr 2fr;
+            line-height: 50px;
+            &.top_line {
+                position:sticky;
+                top:0;
+                background: $bg-color;
+            }
+            div {
+                border-right: 1px solid $border-color;
+                border-bottom: 1px solid $border-color;
+                &.user_msg_wrap {
+                    overflow: hidden;
+                    padding: 8.5px 12.5px;
+                    .user_msg {
+                        text-align: left;
+                        padding: 0 11.5px;
+                        border-radius: 5px;
+                        border: 1px solid $border-color;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        line-height: 31px;
+                        &.mgs_null{
+                            color: #9DA1A8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }

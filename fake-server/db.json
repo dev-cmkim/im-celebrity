@@ -1,0 +1,275 @@
+{
+    "project": {
+        "id": 1234,
+        "recruits": 3
+    },
+    "projectRequests": [
+        {
+            "id": 1,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "d",
+            "name": "김지현",
+            "nickName": "고구마",
+            "yearOfBirth": 1993,
+            "gender": "Female",
+            "region": "서울",
+            "category": "코스메틱",
+            "message": "안녕하세요~ 네이버 블로그 하루 방문자 수 10,000입니다. \n상위 노출 목표로 해보겠습니다. \n잘 부탁드립니다.",
+            "recommend": 13,
+            "today": 10305,
+            "cancelRate": 0,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 1
+        },
+        {
+            "id": 2,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "z",
+            "name": "최주현",
+            "nickName": "뽀또",
+            "yearOfBirth": 1996,
+            "gender": "Female",
+            "region": "충북",
+            "category": "기타",
+            "message": "꼭 체험해보고 싶은 제품이네요! 다수의 리뷰 경험을 살려 제품의 특장점이 잘 드러나도록 자연스러운 후기 남겨볼게요!",
+            "recommend": 4,
+            "today": 7000,
+            "cancelRate": 70,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 0
+        },
+        {
+            "id": 3,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "z",
+            "name": "박이나",
+            "nickName": "ena",
+            "yearOfBirth": 1988,
+            "gender": "Female",
+            "region": "경기",
+            "category": "기타",
+            "message": "",
+            "recommend": 1,
+            "today": 0,
+            "cancelRate": 2,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 0
+        },
+        {
+            "id": 4,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "c",
+            "name": "장우현",
+            "nickName": "스포츠맨",
+            "yearOfBirth": 1982,
+            "gender": "Female",
+            "region": "전남",
+            "category": "스포츠/건강",
+            "message": "정성 리뷰 약속드립니다",
+            "recommend": 0,
+            "today": 30,
+            "cancelRate": 5,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 0
+        },
+        {
+            "id": 5,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "c",
+            "name": "이영현",
+            "nickName": "young00",
+            "yearOfBirth": 1984,
+            "gender": "Male",
+            "region": "인천",
+            "category": "출산/육아",
+            "message": "dslr 사용하고 있어요 사진 잘 찍습니다~",
+            "recommend": 34,
+            "today": 24000,
+            "cancelRate": 0,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 2
+        },
+        {
+            "id": 6,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "c",
+            "name": "강지원",
+            "nickName": "바나나킥",
+            "yearOfBirth": 1999,
+            "gender": "Male",
+            "region": "서울",
+            "category": "기타",
+            "message": "본문에 키워드 많이 노출시켜서 꼼꼼하게 작성해볼게요\n리뷰도 수정 요청하시면 바로바로 해드립니다",
+            "recommend": 21,
+            "today": 4300,
+            "cancelRate": 12,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 1
+        },
+        {
+            "id": 7,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "a",
+            "name": "박수현",
+            "nickName": "park",
+            "yearOfBirth": 2000,
+            "gender": "Female",
+            "region": "충북",
+            "category": "코스메틱",
+            "message": "사진 잘 찍습니다",
+            "recommend": 0,
+            "today": 1010,
+            "cancelRate": 0,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 0
+        },
+        {
+            "id": 8,
+            "isChosen": false,
+            "grade": "a",
+            "name": "오현지",
+            "nickName": "ohu_ni",
+            "yearOfBirth": 1992,
+            "gender": "Female",
+            "region": "경남",
+            "category": "생활용품",
+            "message": "",
+            "recommend": 1,
+            "today": 0,
+            "cancelRate": 0,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 0
+        },
+        {
+            "id": 9,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "b",
+            "name": "김성철",
+            "nickName": "성철",
+            "yearOfBirth": 1989,
+            "gender": "Male",
+            "region": "서울",
+            "category": "기타",
+            "message": "예전에 비슷한거 한번 써본 적 있었는데 너무 좋았어요ㅎㅎ 꼭 선정되었으면 좋겠습니다 리뷰 경험 많아요",
+            "recommend": 13,
+            "today": 5500,
+            "cancelRate": 6,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 0
+        },
+        {
+            "id": 10,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "b",
+            "name": "김수현",
+            "nickName": "surgeon",
+            "yearOfBirth": 1997,
+            "gender": "Male",
+            "region": "경기",
+            "category": "기타",
+            "message": "",
+            "recommend": 3,
+            "today": 1200,
+            "cancelRate": 0,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 0
+        },
+        {
+            "id": 11,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "a",
+            "name": "고현주",
+            "nickName": "고고미",
+            "yearOfBirth": 1980,
+            "gender": "Female",
+            "region": "제주",
+            "category": "맛집",
+            "message": "",
+            "recommend": 0,
+            "today": 0,
+            "cancelRate": 50,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 0
+        },
+        {
+            "id": 12,
+            "isBookmark": false,
+            "isChosen": false,
+            "grade": "b",
+            "name": "장희수",
+            "nickName": "뚜두뚜두",
+            "yearOfBirth": 1992,
+            "gender": "Female",
+            "region": "서울",
+            "category": "생활용품",
+            "message": "정성스러운 리뷰 작성할게요 잘 부탁드립니다",
+            "recommend": 23,
+            "today": 500,
+            "cancelRate": 2,
+            "snsUrl": "https://reviewshare.io",
+            "brandRequestCounts": 1
+        }
+    ],
+    "brandRequestsHistory": [
+        {
+            "userId": 1,
+            "list": [
+                {
+                    "projectId": 1200,
+                    "sns": "Instagram",
+                    "title": "[웰빙엘에스] 발효커피 루와 드립백 커피",
+                    "reviewUrl": "https://reviewshare.io"
+                }
+            ]
+        },
+        {
+            "userId": 5,
+            "list": [
+                {
+                    "projectId": 1100,
+                    "sns": "NaverBlog",
+                    "title": "[웰빙엘에스] 강아지도 식물성유산균으로! 특허 받은 강아지유산균 락토펫",
+                    "reviewUrl": "https://reviewshare.io"
+                },
+                {
+                    "projectId": 1110,
+                    "sns": "Instagram",
+                    "title": "[웰빙엘에스] 17종 혼합유산균 뷰티락 프로-17",
+                    "reviewUrl": null
+                }
+            ]
+        },
+        {
+            "userId": 6,
+            "list": [
+                {
+                    "projectId": 1110,
+                    "sns": "Instagram",
+                    "title": "[웰빙엘에스] 17종 혼합유산균 뷰티락 프로-17",
+                    "reviewUrl": "https://reviewshare.io"
+                }
+            ]
+        },
+        {
+            "userId": 12,
+            "list": [
+                {
+                    "projectId": 1201,
+                    "sns": "NaverBlog",
+                    "title": "[웰빙엘에스] 웰풍년 파이토바이옴 토양미생물제제",
+                    "reviewUrl": "https://reviewshare.io"
+                }
+            ]
+        }
+    ]
+}
