@@ -2,7 +2,7 @@ import  React, { useEffect, useState } from 'react';
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
-    const [ userCount, setUserCount ] = useState(null);
+
     useEffect(() => {
         fetch("http://localhost:9000/projectRequests")
           .then(res => {
@@ -10,8 +10,36 @@ const UserList = () => {
           })
           .then(data => {
             setUsers(data)
+            // console.log(data.yearOfBirth)
           });
       }, []);
+      
+    // 메세지 dropdown
+    const showMessage = (e) => {
+        e.target.classList.toggle('show_msg')
+    }
+
+    // 리뷰어 등급 
+    const returnGrade = (prop) => {
+        switch (prop) {
+            case 'a' :
+                return '화이트' 
+            case 'b' :
+                return '실버'
+            case 'c' :
+                return '골드'
+            case 'd' :
+                return '다이아' 
+            case 'z' :
+                return '블랙'
+            default :
+        }
+    }
+    // 리뷰어 나이 
+    const today = new Date();
+    const returnAge = (prop) => {
+        return today.getFullYear() - prop + 1;
+    }
     return (
         <div className='user_list_box'>
             <ul>
@@ -37,15 +65,15 @@ const UserList = () => {
                         <div><input type='checkBox'></input></div>
                         <div>별표</div>
                         <div>{val.id}</div>
-                        <div>{val.grade}</div>
-                        <div>{val.name}</div>
-                        <div>{val.yearOfBirth}</div>
+                        <div>{ returnGrade(val.grade) }</div>
+                        <div>{val.name} ({val.nickName})</div>
+                        <div>{ returnAge(val.yearOfBirth) }</div>
                         <div>{val.gender}</div>
                         <div>{val.region}</div>
                         <div>{val.category}</div>
                         <div className='user_msg_wrap'>
                             {val.message ?
-                             <div className='user_msg'>
+                             <div className='user_msg msg_exists' onClick={ showMessage }>
                                 {val.message}
                              </div> 
                             :

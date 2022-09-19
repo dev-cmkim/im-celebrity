@@ -99,6 +99,27 @@ body {
                         text-overflow: ellipsis;
                         white-space: nowrap;
                         line-height: 31px;
+                        position: relative;
+                        &.show_msg {
+                            overflow: inherit;
+                            white-space: inherit;
+                            height: fit-content;
+                            &.msg_exists:after {
+                                transform: rotateX(180deg);
+                                transition: all ease 0.5s; 
+                            }
+                        }
+                        &.msg_exists:after {
+                            content: '';
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            position: absolute;
+                            top: 10px;
+                            right:10px;
+                            background-image: url('./images/ic_down.png');
+                            transition: all ease 0.5s; 
+                        }
                         &.mgs_null{
                             color: #9DA1A8;
                         }
