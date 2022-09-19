@@ -68,7 +68,7 @@ const UserList = () => {
                         <div>{ returnGrade(val.grade) }</div>
                         <div>{val.name} ({val.nickName})</div>
                         <div>{ returnAge(val.yearOfBirth) }</div>
-                        <div>{val.gender}</div>
+                        <div>{val.gender ==='Female' ? "여" : "남"}</div>
                         <div>{val.region}</div>
                         <div>{val.category}</div>
                         <div className='user_msg_wrap'>
