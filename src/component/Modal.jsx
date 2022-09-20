@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
 
 const Modal = (props) => {
-  const { open, close, userId, userName,userNickName } = props;
+  const { open, close, userId, userName, userNickName } = props;
   const [brandCnt, setBrandCnt] = useState(null);
   const [brandRequestsHistory, setBrandRequestHistory] = useState([]);
 
 
-  console.log(userId)
-  console.log(userName)
-  console.log(userNickName)
-
   useEffect(() => {
-    fetch("http://localhost:9000/brandRequestsHistory?userId=")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setBrandRequestHistory(data);
-        setBrandCnt(data.length);
-      });
+    fetch("http://localhost:9000/brandRequestsHistory?" + new URLSearchParams({
+        userId: userId,
+      }))
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          // console.log(data)
+          setBrandRequestHistory(data);
+          // setBrandCnt(data.length);
+        });
   }, []);
 
   return (
@@ -39,7 +38,7 @@ const Modal = (props) => {
                 <div>제출결과물</div>
               </li>
               {brandRequestsHistory.map((val) => (
-                <li key={val.id}>
+                <li key={brandCnt}>
                   <div>
                     {val.list.sns}
                     {val.list.title}

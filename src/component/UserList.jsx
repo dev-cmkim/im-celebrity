@@ -9,7 +9,7 @@ const UserList = () => {
   const [userNickName, setUserNickName] = useState(null);
 
   useEffect(() => {
-      fetch("http://localhost:9000/projectRequests")
+    fetch("http://localhost:9000/projectRequests")
       .then((res) => {
         return res.json();
       })
@@ -54,12 +54,12 @@ const UserList = () => {
     window.open(prop);
   };
   //모달 open
-//   const openModal = () => {
-//     setModalOpen(true);
-//     // setUserId(props.userId)
-//     // setUserName(props.userName)
-//     // setUserNickName(props.userNickName)
-//   };
+  //   const openModal = () => {
+  //     setModalOpen(true);
+  //     // setUserId(props.userId)
+  //     // setUserName(props.userName)
+  //     // setUserNickName(props.userNickName)
+  //   };
   const closeModal = () => {
     setModalOpen(false);
   };
@@ -129,12 +129,16 @@ const UserList = () => {
               {val.brandRequestCounts === 0 ? (
                 "-"
               ) : (
-                <button className="brand_count" onClick={() => {
-                    setModalOpen(true);
+                <button
+                  className="brand_count"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setModalOpen(true)
                     setUserId(val.id)
                     setUserName(val.name)
-                    setUserNickName(val.nickName)
-                }}>
+                    setUserNickName(val.nickName);
+                  }}
+                >
                   {val.brandRequestCounts}회
                 </button>
               )}
