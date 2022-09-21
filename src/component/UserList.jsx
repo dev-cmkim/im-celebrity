@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Modal } from "./Modal";
 
@@ -7,6 +8,7 @@ const UserList = () => {
 
   const [users, setUsers] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
+  const [usersList, setUsersList] = useState([]);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [userId, setUserId] = useState(null);
@@ -17,34 +19,31 @@ const UserList = () => {
   const [activedB, setActivedB] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:9000/projectRequests?isChosen=false")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setUsers(data);
-        setUserCnt(data.length);
-      });
-    //선정자 목록 get
-    fetch("http://localhost:9000/projectRequests?isChosen=true")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setSelectedUsers(data);
-        console.log(selectedUsers);
-        setSelectedUserCnt(data.length);
-      });
-  }, []);
+    async function getUsers() {
+      const response = await axios.get("http://localhost:9000/projectRequests?isChosen=false")
+      setUserCnt(response.data.length)
+      setUsers(response.data)
+      //초깃값설정
+      setUsersList(response.data)
+    }
+    getUsers()
+
+    async function getSelectedUsers() {
+      const response = await axios.get("http://localhost:9000/projectRequests?isChosen=true")
+      setSelectedUserCnt(response.data.length)
+      setSelectedUsers(response.data)
+    }
+    getSelectedUsers()
+  }, [])
 
   // 메세지 dropdown
   const showMessage = (e) => {
     e.target.classList.toggle("show_msg");
-  };
+  }
   // 별표 이미지 토글
   const toggleStar = (e) => {
     e.target.classList.toggle("select_start");
-  };
+  }
   // 리뷰어 등급
   const returnGrade = (prop) => {
     switch (prop) {
@@ -60,29 +59,31 @@ const UserList = () => {
         return "블랙";
       default:
     }
-  };
+  }
   // 리뷰어 나이
   const today = new Date();
   const returnAge = (prop) => {
     return today.getFullYear() - prop + 1;
-  };
+  }
   // 새창으로 snsUrl open
   const openSnsUrl = (e, prop) => {
     e.preventDefault();
     window.open(prop);
-  };
+  }
   // 모달 close
   const closeModal = () => {
     setModalOpen(false);
-  };
+  }
 
   return (
     <div className="section">
       <div className="top_menu">
         <div
           onClick={() => {
-            setActivedA(true);
-            setActivedB(false);
+            setActivedA(true)
+            setActivedB(false)
+            //신청리뷰어 리스트
+            setUsersList(users)
           }}
           className={activedA ? "active" : ""}
         >
@@ -90,8 +91,10 @@ const UserList = () => {
         </div>
         <div
           onClick={() => {
-            setActivedA(false);
-            setActivedB(true);
+            setActivedA(false)
+            setActivedB(true)
+            //선정리뷰어 리스트
+            setUsersList(selectedUsers)
           }}
           className={activedB ? "active" : ""}
         >
@@ -119,8 +122,7 @@ const UserList = () => {
             <div>SNS 계정</div>
             <div>내 브랜드 참여</div>
           </li>
-          {/* activedA ? users.map : selectedUsers.map 이렇게 하고싶은데 안됨 */}
-          {users.map((val) => (
+          {(usersList || []).map((val) => (
             <li key={val.id}>
               <div>
                 <input type="checkBox"></input>
@@ -153,7 +155,7 @@ const UserList = () => {
                 <button
                   className="btn_open_sns"
                   onClick={(e) => {
-                    openSnsUrl(e, val.snsUrl);
+                    openSnsUrl(e, val.snsUrl)
                   }}
                 >
                   보기
@@ -166,11 +168,11 @@ const UserList = () => {
                   <button
                     className="brand_count"
                     onClick={(e) => {
-                      e.preventDefault();
-                      setModalOpen(true);
-                      setUserId(val.id);
-                      setUserName(val.name);
-                      setUserNickName(val.nickName);
+                      e.preventDefault()
+                      setModalOpen(true)
+                      setUserId(val.id)
+                      setUserName(val.name)
+                      setUserNickName(val.nickName)
                     }}
                   >
                     {val.brandRequestCounts}회

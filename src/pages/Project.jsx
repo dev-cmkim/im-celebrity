@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../assets/style.scss";
 import { UserList } from "../component";
@@ -5,14 +6,12 @@ import { UserList } from "../component";
 const Project = () => {
   const [projectId, setProjectId] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:9000/project")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setProjectId(data.id);
-      });
-  }, []);
+    async function getProjectInfo() {
+      const response = await axios.get("http://localhost:9000/project")
+      setProjectId(response.data.id)
+    }
+    getProjectInfo()
+  }, [])
 
   return (
     <div>

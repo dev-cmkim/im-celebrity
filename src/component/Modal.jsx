@@ -1,23 +1,20 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Modal = (props) => {
-  const { open, close, userId, userName, userNickName } = props;
+  const { open, close, userName, userNickName } = props;
   const [brandCnt, setBrandCnt] = useState(null);
   const [brandRequestsHistory, setBrandRequestHistory] = useState([]);
 
-
   useEffect(() => {
-    fetch("http://localhost:9000/brandRequestsHistory?" + new URLSearchParams({
-        userId: userId,
-      }))
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          // console.log(data)
-          setBrandRequestHistory(data);
-          // setBrandCnt(data.length);
-        });
+    async function getBrandHistory() {
+      const response = await axios.get(
+        "http://localhost:9000/brandRequestsHistory?"
+      )
+      setBrandRequestHistory(response.data);
+      setBrandCnt(response.data.length);
+    }
+    getBrandHistory()
   }, []);
 
   return (
