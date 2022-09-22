@@ -1,6 +1,8 @@
 // ------------------- 공통 style
 $border-color: #e1e3e9;
+$border-color2: #e6e8ed;
 $bg-color: #f7f7fa;
+$point-color: #0067ff;
 
 body {
   width: 100%;
@@ -26,7 +28,7 @@ h2 {
   flex-direction: row;
   height: 60px;
   line-height: 60px;
-  background: #0067ff;
+  background: $point-color;
   color: #ffffff;
   text-align: left;
   padding: 0 30px;
@@ -71,7 +73,7 @@ h2 {
     }
     .active {
       background-color: #f0f3ff;
-      color: #0067ff;
+      color: $point-color;
     }
   }
 }
@@ -168,7 +170,7 @@ h2 {
           }
         }
         .brand_count {
-          color: #0067ff;
+          color: $point-color;
           &::after {
             content: "";
             display: inline-block;
@@ -192,19 +194,124 @@ h2 {
   left: 0;
   z-index: 9999;
   background-color: rgba(0, 0, 0, 0.6);
-  .content {
+  .content_wrap {
     width: 510px;
     height: 680px;
-    margin: 0 auto;
     border-radius: 0.3rem;
     background-color: #fff;
+    margin: 0 auto;
     animation: modal-show 0.3s;
-
-    .brand_list_area {
-      ul {
-        display: grid;
-        grid-template-columns:5fr 2fr;
-        
+    .content {
+      padding: 30px;
+      /* height: 100%; */
+      height: -webkit-fill-available;
+      text-align: left;
+      position: relative;
+      color: #202225;
+      h2 {
+        margin: 0;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 36px;
+      }
+      h3 {
+        margin-top: 32px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+      }
+      .btn_close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background-color: $point-color;
+        color: #ffffff;
+        font-weight: 700;
+        border-radius: 4px;
+      }
+      .brand_list_area {
+        table {
+          border-collapse: collapse;
+          td {
+            &:last-child {
+              padding: 0 30px;
+            }
+          }
+          thead {
+            background: $bg-color;
+            text-align: center;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 32px;
+            color: #52565d;
+            tr {
+              td {
+                &:first-child {
+                  border-right: 1px solid $border-color2;
+                }
+              }
+            }
+          }
+          tbody {
+            tr {
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 21px;
+              color: #202225;
+              border-bottom: 1px solid $border-color2;
+              td {
+                height: 60px;
+                .icon_sns {
+                  width: 24px;
+                  height: 24px;
+                  text-align: center;
+                  border-radius: 50%;
+                  color: #fff;
+                  display: inline-block;
+                  margin-right: 6px;
+                  &.icon_insta {
+                    background-color: palevioletred;
+                  }
+                  &.icon_blog {
+                    background-color: #02c639;
+                  }
+                }
+              }
+            }
+            button {
+              width: 70px;
+              height: 32px;
+              border-radius: 4px;
+              font-size: 12px;
+              color: #202225;
+              border: 1px solid $border-color2;
+              &.btn_disabled {
+                background-color: #f7f7fa;
+                color: #9da1a8;
+                border: none;
+              }
+            }
+          }
+        }
+      }
+      .bottom_btn_area {
+        width: 92px;
+        height: 38px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        .btn_select_user {
+          width: 100%;
+          height: 100%;
+          font-weight: 500;
+          font-size: 14px;
+          background-color: $point-color;
+          color: #ffffff;
+          font-size: 700;
+          border-radius: 4px;
+        }
       }
     }
   }
