@@ -20,30 +20,38 @@ const UserList = () => {
 
   useEffect(() => {
     async function getUsers() {
-      const response = await axios.get("http://localhost:9000/projectRequests?isChosen=false")
-      setUserCnt(response.data.length)
-      setUsers(response.data)
-      //초깃값설정
-      setUsersList(response.data)
+      try {
+        const response = await axios.get(
+          "http://localhost:9000/projectRequests?isChosen=false"
+        );
+        setUserCnt(response.data.length);
+        setUsers(response.data);
+        //초깃값설정
+        setUsersList(response.data);
+      } catch (error) {
+        alert(error);
+      }
     }
-    getUsers()
+    getUsers();
 
     async function getSelectedUsers() {
-      const response = await axios.get("http://localhost:9000/projectRequests?isChosen=true")
-      setSelectedUserCnt(response.data.length)
-      setSelectedUsers(response.data)
+      const response = await axios.get(
+        "http://localhost:9000/projectRequests?isChosen=true"
+      );
+      setSelectedUserCnt(response.data.length);
+      setSelectedUsers(response.data);
     }
-    getSelectedUsers()
-  }, [])
+    getSelectedUsers();
+  }, []);
 
   // 메세지 dropdown
   const showMessage = (e) => {
     e.target.classList.toggle("show_msg");
-  }
+  };
   // 별표 이미지 토글
   const toggleStar = (e) => {
     e.target.classList.toggle("select_start");
-  }
+  };
   // 리뷰어 등급
   const returnGrade = (prop) => {
     switch (prop) {
@@ -59,31 +67,31 @@ const UserList = () => {
         return "블랙";
       default:
     }
-  }
+  };
   // 리뷰어 나이
   const today = new Date();
   const returnAge = (prop) => {
     return today.getFullYear() - prop + 1;
-  }
+  };
   // 새창으로 snsUrl open
   const openSnsUrl = (e, prop) => {
     e.preventDefault();
     window.open(prop);
-  }
+  };
   // 모달 close
   const closeModal = () => {
     setModalOpen(false);
-  }
+  };
 
   return (
     <div className="section">
       <div className="top_menu">
         <div
           onClick={() => {
-            setActivedA(true)
-            setActivedB(false)
+            setActivedA(true);
+            setActivedB(false);
             //신청리뷰어 리스트
-            setUsersList(users)
+            setUsersList(users);
           }}
           className={activedA ? "active" : ""}
         >
@@ -91,10 +99,10 @@ const UserList = () => {
         </div>
         <div
           onClick={() => {
-            setActivedA(false)
-            setActivedB(true)
+            setActivedA(false);
+            setActivedB(true);
             //선정리뷰어 리스트
-            setUsersList(selectedUsers)
+            setUsersList(selectedUsers);
           }}
           className={activedB ? "active" : ""}
         >
@@ -155,7 +163,7 @@ const UserList = () => {
                 <button
                   className="btn_open_sns"
                   onClick={(e) => {
-                    openSnsUrl(e, val.snsUrl)
+                    openSnsUrl(e, val.snsUrl);
                   }}
                 >
                   보기
@@ -168,11 +176,11 @@ const UserList = () => {
                   <button
                     className="brand_count"
                     onClick={(e) => {
-                      e.preventDefault()
-                      setModalOpen(true)
-                      setUserId(val.id)
-                      setUserName(val.name)
-                      setUserNickName(val.nickName)
+                      e.preventDefault();
+                      setModalOpen(true);
+                      setUserId(val.id);
+                      setUserName(val.name);
+                      setUserNickName(val.nickName);
                     }}
                   >
                     {val.brandRequestCounts}회

@@ -7,11 +7,11 @@ const Project = () => {
   const [projectId, setProjectId] = useState(null);
   useEffect(() => {
     async function getProjectInfo() {
-      const response = await axios.get("http://localhost:9000/project")
-      setProjectId(response.data.id)
+      const response = await axios.get("http://localhost:9000/project");
+      setProjectId(response.data.id);
     }
-    getProjectInfo()
-  }, [])
+    getProjectInfo();
+  }, []);
 
   return (
     <div>

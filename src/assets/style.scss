@@ -17,7 +17,10 @@ button {
   background: none;
   font-size: 14px;
 }
-// 공통 style -------------------
+h2 {
+  white-space: pre-line;
+}
+// 공통 style -------------------s
 .header {
   display: flex;
   flex-direction: row;
@@ -45,6 +48,7 @@ button {
   }
 }
 .section {
+  min-width: 1100px;
   height: 726px;
   margin: 40px 30px;
   border: 1px solid #e1e3e9;
@@ -188,16 +192,21 @@ button {
   left: 0;
   z-index: 9999;
   background-color: rgba(0, 0, 0, 0.6);
-  white-space: pre-wrap;
-  .section {
-    width: 90%;
-    max-width: 450px;
+  .content {
+    width: 510px;
+    height: 680px;
     margin: 0 auto;
     border-radius: 0.3rem;
     background-color: #fff;
-    /* 팝업이 열릴때 스르륵 열리는 효과 */
     animation: modal-show 0.3s;
-    overflow: hidden;
+
+    .brand_list_area {
+      ul {
+        display: grid;
+        grid-template-columns:5fr 2fr;
+        
+      }
+    }
   }
   &.open_modal {
     display: flex;
