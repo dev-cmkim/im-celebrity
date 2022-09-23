@@ -98,6 +98,7 @@ const Modal = (props) => {
               </button>
             </div>
           </div>
+
         </div>
       ) : null}
     </div>

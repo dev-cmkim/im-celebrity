@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { strings } from "../configs";
 import { Modal } from "./Modal";
 
 const UserList = () => {
@@ -18,19 +19,20 @@ const UserList = () => {
   const [activedA, setActivedA] = useState(true);
   const [activedB, setActivedB] = useState(false);
 
+  const [bChecked, setChecked] = useState(false);
+  const [checkedItems, setCheckedItems] = useState(new Set());
+
+  const [btnActive, setBtnActive] = useState(false);
+
   useEffect(() => {
     async function getUsers() {
-      try {
-        const response = await axios.get(
-          "http://localhost:9000/projectRequests?isChosen=false"
-        );
-        setUserCnt(response.data.length);
-        setUsers(response.data);
-        //초깃값설정
-        setUsersList(response.data);
-      } catch (error) {
-        alert(error);
-      }
+      const response = await axios.get(
+        "http://localhost:9000/projectRequests?isChosen=false"
+      );
+      setUserCnt(response.data.length);
+      setUsers(response.data);
+      //초깃값설정
+      setUsersList(response.data);
     }
     getUsers();
 
@@ -43,6 +45,19 @@ const UserList = () => {
     }
     getSelectedUsers();
   }, []);
+  //리뷰어 선정
+  // useEffect(() => {
+  //   if (click) {
+  //     async function selecteUser(prop) {
+  //       const response = await axios.patch(
+  //         `http://localhost:9000/projectRequests/${prop}`,
+  //         { isChosen: "true" }
+  //       );
+  //       console.log("res >>>>>>>>>>:", response);
+  //     }
+  //     selecteUser();
+  //   }
+  // }, [userId]);
 
   // 메세지 dropdown
   const showMessage = (e) => {
@@ -78,6 +93,40 @@ const UserList = () => {
     e.preventDefault();
     window.open(prop);
   };
+  //체크박스 아이디값, 체크여부 판별후 버튼 활성화
+  const checkedItemHandler = (id, isChecked) => {
+    if (isChecked) {
+      checkedItems.add(id);
+      setCheckedItems(checkedItems);
+    } else if (!isChecked && checkedItems.has(id)) {
+      checkedItems.delete(id);
+      setCheckedItems(checkedItems);
+    }
+  };
+  const checkHandler = ({ target }) => {
+    setChecked(!bChecked);
+    checkedItemHandler(target.id, target.checked);
+    // input 1개이상 체크 되있을때 버튼활성화
+    if (checkedItems.size > 0) {
+      setBtnActive(true)
+    }else {
+      setBtnActive(false)
+    }
+    // console.log(target.id, target.checked);
+  };
+  const selectUser = ({ target }) => {
+    console.log(checkedItems);
+  };
+  // 버튼활성화
+  useEffect(() => {
+    console.log(checkedItems);
+    if (btnActive) {
+      console.log("active");
+    } else {
+      console.log("disabled");
+    }
+  }, [checkedItems]);
+
   // 모달 close
   const closeModal = () => {
     setModalOpen(false);
@@ -95,7 +144,7 @@ const UserList = () => {
           }}
           className={activedA ? "active" : ""}
         >
-          신청 리뷰어({userCnt})
+          {strings.user.applied}({userCnt})
         </div>
         <div
           onClick={() => {
@@ -106,7 +155,7 @@ const UserList = () => {
           }}
           className={activedB ? "active" : ""}
         >
-          선정 리뷰어({selectedUserCnt})
+          {strings.user.selected}({selectedUserCnt})
         </div>
       </div>
       <div className="user_list_box">
@@ -133,7 +182,14 @@ const UserList = () => {
           {(usersList || []).map((val) => (
             <li key={val.id}>
               <div>
-                <input type="checkBox"></input>
+                <input
+                  type="checkBox"
+                  id={val.id}
+                  // checked={bChecked}
+                  onChange={(e) => {
+                    checkHandler(e);
+                  }}
+                />
               </div>
               <div>
                 <div className="star_img" onClick={toggleStar}></div>
@@ -198,6 +254,16 @@ const UserList = () => {
           userNickName={userNickName}
         />
       </div>
+      <button
+        onClick={selectUser}
+        className={
+          btnActive
+            ? "btn_select_user btnActive"
+            : "btn_select_user btnDisabled"
+        }
+      >
+        {strings.button.select}
+      </button>
     </div>
   );
 };
