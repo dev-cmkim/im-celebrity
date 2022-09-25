@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { strings } from "../configs";
-import { Modal } from "./Modal";
+import { CommonModal } from "./modal";
+import { DetailModal } from "./modal/DetailModal";
 
 const UserList = () => {
   const [userCnt, setUserCnt] = useState(null);
@@ -11,7 +12,9 @@ const UserList = () => {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [usersList, setUsersList] = useState([]);
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpenC, setModalOpenC] = useState(false);
+  const [modalOpenD, setModalOpenD] = useState(false);
+  const [modalContent, setModalContent] = useState("");
   const [userId, setUserId] = useState(null);
   const [userName, setUserName] = useState(null);
   const [userNickName, setUserNickName] = useState(null);
@@ -19,8 +22,9 @@ const UserList = () => {
   const [activedA, setActivedA] = useState(true);
   const [activedB, setActivedB] = useState(false);
 
-  const [bChecked, setChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const [checkedItems, setCheckedItems] = useState(new Set());
+  const [checkedCnt, setCheckedCnt] = useState(0);
 
   const [btnActive, setBtnActive] = useState(false);
 
@@ -45,27 +49,79 @@ const UserList = () => {
     }
     getSelectedUsers();
   }, []);
+  //체크박스 아이디값, 체크여부 판별후 버튼 활성화
+  const checkedItemHandler = (id, isChecked) => {
+    setCheckedCnt(checkedCnt + 1);
+    if (isChecked && checkedItems.size < 3) {
+      checkedItems.add(id);
+      setCheckedItems(checkedItems);
+    } else if (!isChecked && checkedItems.has(id)) {
+      checkedItems.delete(id);
+      setCheckedItems(checkedItems);
+    }
+  };
+  const checkHandler = ({target }) => {
+    // input 1개이상 체크 되있을때 버튼활성화
+    setIsChecked(!isChecked);
+    checkedItemHandler(target.id, target.checked);
+    if (checkedItems.size > 0) {
+      setBtnActive(true);
+      setCheckedCnt(checkedItems.size);
+      target.parentElement.parentElement.style.backgroundColor = '#f7f7fa';
+    }
+    //3이상 체크 못하도록
+    if (checkedCnt == 3 || checkedCnt >3) {
+      target.checked = false;
+      target.parentElement.parentElement.style.backgroundColor = '#ffffff';
+    }
+  };
   //리뷰어 선정
-  // useEffect(() => {
-  //   if (click) {
-  //     async function selecteUser(prop) {
-  //       const response = await axios.patch(
-  //         `http://localhost:9000/projectRequests/${prop}`,
-  //         { isChosen: "true" }
-  //       );
-  //       console.log("res >>>>>>>>>>:", response);
-  //     }
-  //     selecteUser();
-  //   }
-  // }, [userId]);
-
+  const selectUser = () => {
+    setModalOpenC(true);
+    setModalContent("select");
+    checkedItems.forEach((val) => {
+      async function patchUserId() {
+        try {
+          const response = await axios.patch(
+            `http://localhost:9000/projectRequests/${val}`,
+            {
+              isChosen: "true",
+            }
+          );
+        } catch (err) {
+          setModalContent(err.response);
+        }
+      }
+      patchUserId();
+    });
+  };
+  //리뷰어 취소
+  const delateUser = () => {
+    setModalOpenC(true);
+    setModalContent("delete");
+    checkedItems.forEach((val) => {
+      async function patchUserId() {
+        try {
+          const response = await axios.patch(
+            `http://localhost:9000/projectRequests/${val}`,
+            {
+              isChosen: "false",
+            }
+          );
+        } catch (err) {
+          setModalContent(err.response);
+        }
+      }
+      patchUserId();
+    });
+  };
   // 메세지 dropdown
   const showMessage = (e) => {
     e.target.classList.toggle("show_msg");
   };
   // 별표 이미지 토글
   const toggleStar = (e) => {
-    e.target.classList.toggle("select_start");
+    e.target.classList.toggle("select_star");
   };
   // 리뷰어 등급
   const returnGrade = (prop) => {
@@ -92,44 +148,6 @@ const UserList = () => {
   const openSnsUrl = (e, prop) => {
     e.preventDefault();
     window.open(prop);
-  };
-  //체크박스 아이디값, 체크여부 판별후 버튼 활성화
-  const checkedItemHandler = (id, isChecked) => {
-    if (isChecked) {
-      checkedItems.add(id);
-      setCheckedItems(checkedItems);
-    } else if (!isChecked && checkedItems.has(id)) {
-      checkedItems.delete(id);
-      setCheckedItems(checkedItems);
-    }
-  };
-  const checkHandler = ({ target }) => {
-    setChecked(!bChecked);
-    checkedItemHandler(target.id, target.checked);
-    // input 1개이상 체크 되있을때 버튼활성화
-    if (checkedItems.size > 0) {
-      setBtnActive(true)
-    }else {
-      setBtnActive(false)
-    }
-    // console.log(target.id, target.checked);
-  };
-  const selectUser = ({ target }) => {
-    console.log(checkedItems);
-  };
-  // 버튼활성화
-  useEffect(() => {
-    console.log(checkedItems);
-    if (btnActive) {
-      console.log("active");
-    } else {
-      console.log("disabled");
-    }
-  }, [checkedItems]);
-
-  // 모달 close
-  const closeModal = () => {
-    setModalOpen(false);
   };
 
   return (
@@ -164,35 +182,36 @@ const UserList = () => {
             <div>
               <input type="checkBox"></input>
             </div>
-            <div>별표</div>
-            <div>NO</div>
-            <div>등급</div>
-            <div>이름(닉네임)</div>
-            <div>나이</div>
-            <div>성별</div>
-            <div>지역</div>
-            <div>활동 분야</div>
-            <div>전략</div>
-            <div>추천수</div>
-            <div>취소율</div>
-            <div>평균 투데이</div>
-            <div>SNS 계정</div>
-            <div>내 브랜드 참여</div>
+            <div>{strings.keyword.isBookmark}</div>
+            <div>{strings.keyword.id}</div>
+            <div>{strings.keyword.isBookmark}</div>
+            <div>{strings.keyword.name}</div>
+            <div>{strings.keyword.age}</div>
+            <div>{strings.keyword.gender}</div>
+            <div>{strings.keyword.region}</div>
+            <div>{strings.keyword.category}</div>
+            <div>{strings.keyword.userMessage}</div>
+            <div>{strings.keyword.recommend}</div>
+            <div>{strings.keyword.cancelRate}</div>
+            <div>{strings.keyword.today}</div>
+            <div>{strings.keyword.snsUrl}</div>
+            <div>{strings.keyword.brandRequestCounts}</div>
           </li>
           {(usersList || []).map((val) => (
-            <li key={val.id}>
+            <li key={val.id} id="liContent">
               <div>
                 <input
                   type="checkBox"
                   id={val.id}
-                  // checked={bChecked}
                   onChange={(e) => {
                     checkHandler(e);
                   }}
                 />
               </div>
               <div>
-                <div className="star_img" onClick={toggleStar}></div>
+                <div className="star_img_wrap">
+                  <div className="star_img" onClick={toggleStar}></div>
+                </div>
               </div>
               <div>{val.id}</div>
               <div>{returnGrade(val.grade)}</div>
@@ -209,7 +228,7 @@ const UserList = () => {
                     {val.message}
                   </div>
                 ) : (
-                  <div className="user_msg mgs_null">내용이 없습니다.</div>
+                  <div className="user_msg mgs_null">{strings.main.noMsg}</div>
                 )}
               </div>
               <div>{val.recommend}회</div>
@@ -222,7 +241,7 @@ const UserList = () => {
                     openSnsUrl(e, val.snsUrl);
                   }}
                 >
-                  보기
+                  {strings.button.show}
                 </button>
               </div>
               <div>
@@ -233,7 +252,8 @@ const UserList = () => {
                     className="brand_count"
                     onClick={(e) => {
                       e.preventDefault();
-                      setModalOpen(true);
+                      setModalOpenD(true);
+                      // setModalType("detail");
                       setUserId(val.id);
                       setUserName(val.name);
                       setUserNickName(val.nickName);
@@ -246,24 +266,36 @@ const UserList = () => {
             </li>
           ))}
         </ul>
-        <Modal
-          open={modalOpen}
-          close={closeModal}
+        <DetailModal
+          open={modalOpenD}
+          close={(e) => {
+            setModalOpenD(false);
+          }}
           userId={userId}
           userName={userName}
           userNickName={userNickName}
+          activedA={activedA}
         />
       </div>
       <button
-        onClick={selectUser}
+        onClick={activedA ? selectUser : delateUser}
         className={
           btnActive
             ? "btn_select_user btnActive"
             : "btn_select_user btnDisabled"
         }
       >
-        {strings.button.select}
+        {btnActive ? checkedCnt + strings.button.count : ""}
+        {activedA ? `${strings.button.select}` : `${strings.button.delete}`}
       </button>
+      <CommonModal
+        open={modalOpenC}
+        close={(e) => {
+          location.reload();
+        }}
+        userCnt={checkedItems.size}
+        content={modalContent}
+      />
     </div>
   );
 };

@@ -7,7 +7,7 @@
     {
       "id": 1,
       "isBookmark": false,
-      "isChosen": "true",
+      "isChosen": "false",
       "grade": "d",
       "name": "김지현",
       "nickName": "고구마",
@@ -25,7 +25,7 @@
     {
       "id": 2,
       "isBookmark": false,
-      "isChosen": false,
+      "isChosen": "false",
       "grade": "z",
       "name": "최주현",
       "nickName": "뽀또",
@@ -43,7 +43,7 @@
     {
       "id": 3,
       "isBookmark": false,
-      "isChosen": false,
+      "isChosen": "false",
       "grade": "z",
       "name": "박이나",
       "nickName": "ena",
@@ -61,7 +61,7 @@
     {
       "id": 4,
       "isBookmark": false,
-      "isChosen": false,
+      "isChosen": "true",
       "grade": "c",
       "name": "장우현",
       "nickName": "스포츠맨",
@@ -79,7 +79,7 @@
     {
       "id": 5,
       "isBookmark": false,
-      "isChosen": false,
+      "isChosen": "false",
       "grade": "c",
       "name": "이영현",
       "nickName": "young00",
@@ -97,7 +97,7 @@
     {
       "id": 6,
       "isBookmark": false,
-      "isChosen": false,
+      "isChosen": "false",
       "grade": "c",
       "name": "강지원",
       "nickName": "바나나킥",
@@ -115,7 +115,7 @@
     {
       "id": 7,
       "isBookmark": false,
-      "isChosen": false,
+      "isChosen": "false",
       "grade": "a",
       "name": "박수현",
       "nickName": "park",
@@ -132,7 +132,7 @@
     },
     {
       "id": 8,
-      "isChosen": false,
+      "isChosen": "false",
       "grade": "a",
       "name": "오현지",
       "nickName": "ohu_ni",
@@ -150,7 +150,7 @@
     {
       "id": 9,
       "isBookmark": false,
-      "isChosen": false,
+      "isChosen": "false",
       "grade": "b",
       "name": "김성철",
       "nickName": "성철",
@@ -168,7 +168,7 @@
     {
       "id": 10,
       "isBookmark": false,
-      "isChosen": false,
+      "isChosen": "false",
       "grade": "b",
       "name": "김수현",
       "nickName": "surgeon",
@@ -186,7 +186,7 @@
     {
       "id": 11,
       "isBookmark": false,
-      "isChosen": false,
+      "isChosen": "false",
       "grade": "a",
       "name": "고현주",
       "nickName": "고고미",
@@ -204,7 +204,7 @@
     {
       "id": 12,
       "isBookmark": false,
-      "isChosen": false,
+      "isChosen": "true",
       "grade": "b",
       "name": "장희수",
       "nickName": "뚜두뚜두",

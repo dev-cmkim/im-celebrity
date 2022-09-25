@@ -1,14 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { strings } from "../configs";
+import { strings } from "../../configs";
+import { CommonModal } from "./CommonModal";
 
-const Modal = (props) => {
-  const { open, close, userId, userName, userNickName } = props;
+const DetailModal = (props) => {
+  const { open, close, userId, userName, userNickName, activedA } = props;
   const [brandCnt, setBrandCnt] = useState(null);
   const [brandRequestsHistory, setBrandRequestHistory] = useState([]);
+  const [modalOpenC, setModalOpenC] = useState(false);
+  const [modalContent, setModalContent] = useState("");
 
   useEffect(() => {
-    // 모달팝업 open 시에 api 호출
+    // 모달 open 일때만 api 호출하도록
     if (open) {
       async function getBrandHistory() {
         const response = await axios.get(
@@ -39,6 +42,43 @@ const Modal = (props) => {
         return <span className="icon_sns icon_blog">N</span>;
       default:
     }
+  };
+  //신청자일경우 선정버튼 , 선정자일경우 취소버튼 분기처리
+  //리뷰어 선정
+  const selectUser = (prop) => {
+    setModalOpenC(true);
+    setModalContent("select");
+    async function patchUserId() {
+      try {
+        const response = await axios.patch(
+          `http://localhost:9000/projectRequests/${prop}`,
+          {
+            isChosen: "true",
+          }
+        );
+      } catch (err) {
+        setModalContent(err.response);
+      }
+    }
+    patchUserId();
+  };
+  //리뷰어 취소
+  const delateUser = (prop) => {
+    setModalOpenC(true);
+    setModalContent("delete");
+    async function patchUserId() {
+      try {
+        const response = await axios.patch(
+          `http://localhost:9000/projectRequests/${prop}`,
+          {
+            isChosen: "false",
+          }
+        );
+      } catch (err) {
+        setModalContent(err.response);
+      }
+    }
+    patchUserId();
   };
 
   return (
@@ -93,16 +133,30 @@ const Modal = (props) => {
               </table>
             </div>
             <div className="bottom_btn_area">
-              <button onClick={() => {console.log('리뷰어 선정 !!!!')}} className="btn_select_user">
-                {strings.button.select}
+              <button
+                onClick={(e) => {
+                  activedA ? selectUser(userId) : delateUser(userId);
+                }}
+                className="btn_select_user"
+              >
+                {activedA
+                  ? `${strings.button.select}`
+                  : `${strings.button.delete}`}
               </button>
             </div>
           </div>
-
+          <CommonModal
+            open={modalOpenC}
+            close={(e) => {
+              location.reload();
+            }}
+            userCnt={1}
+            content={modalContent}
+          />
         </div>
       ) : null}
     </div>
   );
 };
 
-export { Modal };
+export { DetailModal };

@@ -1,3 +1,7 @@
+@mixin containSize() {
+  width: 100%;
+  height: 100%;
+}
 // ------------------- 공통 style
 $border-color: #e1e3e9;
 $border-color2: #e6e8ed;
@@ -5,8 +9,7 @@ $bg-color: #f7f7fa;
 $point-color: #0067ff;
 
 body {
-  width: 100%;
-  height: 100%;
+  @include containSize();
   margin: 0;
   padding: 0;
   position: relative;
@@ -100,26 +103,30 @@ h2 {
           z-index: 999;
           color: #52565d;
         }
-        &:hover {
+        &:hover ,&.on{
           background-color: $bg-color;
         }
         div {
           border-right: 1px solid $border-color;
           border-bottom: 1px solid $border-color;
-          position: relative;
-          .star_img {
-            width: 18px;
-            height: 17.14px;
-            border: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-image: url("../assets/images/star-regular.svg");
-            background-size: cover;
-          }
-          &.select_start {
-            background-image: url("../assets/images/star-solid.svg");
+          font-size: 14px;
+          .star_img_wrap {
+            @include containSize();
+            position: relative;
+            .star_img {
+              width: 18px;
+              height: 17.14px;
+              border: none;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background-image: url("../assets/images/star-regular.svg");
+              background-size: cover;
+              &.select_star {
+                background-image: url("../assets/images/star-solid.svg");
+              }
+            }
           }
           .btn_open_sns {
             width: 70px;
@@ -190,13 +197,13 @@ h2 {
     font-weight: 500;
     border-radius: 4px;
     background-color: $bg-color;
-    color: #9DA1A8;
+    color: #9da1a8;
     &.btnActive {
       background-color: #0067ff;
       color: #ffffff;
     }
     &.btnDisabled {
-      pointer-events: none; 
+      pointer-events: none;
     }
   }
 }
@@ -247,6 +254,7 @@ h2 {
       }
       .brand_list_area {
         table {
+          width: 100%;
           border-collapse: collapse;
           td {
             &:last-child {
@@ -319,16 +327,44 @@ h2 {
         right: 50%;
         transform: translate(-50%, -50%);
         .btn_select_user {
-          width: 100%;
-          height: 100%;
+          @include containSize();
           font-weight: 500;
           font-size: 14px;
           background-color: $point-color;
           color: #ffffff;
           font-size: 700;
           border-radius: 4px;
+          padding: 0;
         }
       }
+    }
+  }
+  .content_wrap_common {
+    max-width: 414px;
+    border-radius: 0.3rem;
+    background-color: #fff;
+    margin: 0 auto;
+    animation: modal-show 0.3s;
+    .text_wrap {
+      margin: 0;
+      padding: 30px;
+      border-bottom: 1px solid $border-color;
+      white-space: pre-wrap;
+      p {
+        &:first-child {
+          font-weight: 500;
+        }
+        margin: 0;
+        .point_text {
+          color: $point-color;
+        }
+      }
+    }
+    button {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 50px;
+      color: $point-color;
     }
   }
   &.open_modal {
@@ -338,7 +374,6 @@ h2 {
     animation: modal-bg-show 0.3s;
   }
 }
-
 .modal button {
   outline: none;
   cursor: pointer;
