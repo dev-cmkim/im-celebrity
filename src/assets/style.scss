@@ -6,7 +6,7 @@
 $border-color: #e1e3e9;
 $border-color2: #e6e8ed;
 $bg-color: #f7f7fa;
-$point-color: #0067ff;
+$point-color: navy;
 
 body {
   @include containSize();
@@ -94,7 +94,7 @@ h2 {
       font-size: 14px;
       li {
         display: grid;
-        grid-template-columns: 0.5fr 1fr 1fr 2fr 3fr 1fr 1fr 1fr 2fr 10fr 2fr 2fr 3fr 2.5fr 3fr;
+        grid-template-columns: 0.5fr 1fr 2fr 3fr 1fr 1fr 1fr 2fr 10fr 2fr 2fr 3fr 2.5fr 3fr;
         line-height: 50px;
         &.top_line {
           position: sticky;
@@ -133,7 +133,7 @@ h2 {
             line-height: 32px;
             color: #fff;
             font-size: 12px;
-            background-color: #02c639;
+            background-color: lightblue;
             border-radius: 4px;
           }
           &.user_msg_wrap {
@@ -199,7 +199,7 @@ h2 {
     background-color: $bg-color;
     color: #9da1a8;
     &.btnActive {
-      background-color: #0067ff;
+      background-color: $point-color;
       color: #ffffff;
     }
     &.btnDisabled {

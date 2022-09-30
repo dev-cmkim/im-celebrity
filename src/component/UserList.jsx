@@ -50,7 +50,7 @@ const UserList = () => {
     getSelectedUsers();
   }, []);
   //체크박스 아이디값, 체크여부 판별후 버튼 활성화
-  const checkedItemHandler = (id, isChecked) => {
+  const checkedItem = (id, isChecked) => {
     setCheckedCnt(checkedCnt + 1);
     if (isChecked && checkedItems.size < 3) {
       checkedItems.add(id);
@@ -60,10 +60,10 @@ const UserList = () => {
       setCheckedItems(checkedItems);
     }
   };
-  const checkHandler = ({target }) => {
+  const checkInputBox = ({target }) => {
     // input 1개이상 체크 되있을때 버튼활성화
     setIsChecked(!isChecked);
-    checkedItemHandler(target.id, target.checked);
+    checkedItem(target.id, target.checked);
     if (checkedItems.size > 0) {
       setBtnActive(true);
       setCheckedCnt(checkedItems.size);
@@ -127,7 +127,7 @@ const UserList = () => {
   const returnGrade = (prop) => {
     switch (prop) {
       case "a":
-        return "화이트";
+        return "브론즈";
       case "b":
         return "실버";
       case "c":
@@ -135,7 +135,7 @@ const UserList = () => {
       case "d":
         return "다이아";
       case "z":
-        return "블랙";
+        return "플레티넘";
       default:
     }
   };
@@ -182,9 +182,8 @@ const UserList = () => {
             <div>
               <input type="checkBox"></input>
             </div>
-            <div>{strings.keyword.isBookmark}</div>
             <div>{strings.keyword.id}</div>
-            <div>{strings.keyword.isBookmark}</div>
+            <div>{strings.keyword.grade}</div>
             <div>{strings.keyword.name}</div>
             <div>{strings.keyword.age}</div>
             <div>{strings.keyword.gender}</div>
@@ -204,14 +203,9 @@ const UserList = () => {
                   type="checkBox"
                   id={val.id}
                   onChange={(e) => {
-                    checkHandler(e);
+                    checkInputBox(e);
                   }}
                 />
-              </div>
-              <div>
-                <div className="star_img_wrap">
-                  <div className="star_img" onClick={toggleStar}></div>
-                </div>
               </div>
               <div>{val.id}</div>
               <div>{returnGrade(val.grade)}</div>
