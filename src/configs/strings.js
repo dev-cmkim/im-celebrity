@@ -2,7 +2,7 @@ export const strings = {
   main: {
     currentUser: "모집현황",
     project: {
-      no: "프로젝트번호",
+      name: "나는셀럽 서포터즈 1기 모집",
     },
     noMsg: "내용이 없습니다.",
   },
@@ -23,12 +23,12 @@ export const strings = {
     brandRequestCounts: "내 브랜드 참여"
   },
   user: {
-    applied: "신청 리뷰어",
-    selected: "선정 리뷰어",
+    applied: "신청자 목록",
+    selected: "선정자 목록",
   },
   list: {
-    selectedList: "선정목록은 ",
-    canceldList: "취소목록은 "
+    selectedList: "선정자 목록은 ",
+    canceldList: "취소자 목록은 "
   },
   popup: {
     all: "총 ",
