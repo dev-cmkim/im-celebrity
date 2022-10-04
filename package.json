@@ -1,5 +1,5 @@
 {
-  "homepage": "https://dev-cmkim.github.io/im-celebrity",
+  "homepage":"https://dev-cmkim.github.io/im-celebrity",
   "name": "im-celebrity",
   "version": "0.1.0",
   "private": true,
@@ -16,10 +16,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "node server",
+    "start:dev": "cross-env NODE_PATH=src react-scripts start",
+    "build": "cross-env NODE_PATH=src react-scripts build",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "heroku-postbuild": "cross-env NODE_PATH=src npm run build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
