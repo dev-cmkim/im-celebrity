@@ -1,5 +1,5 @@
 {
-  "homepage":"https://dev-cmkim.github.io/im-celebrity",
+  "homepage": "https://dev-cmkim.github.io/im-celebrity",
   "name": "im-celebrity",
   "version": "0.1.0",
   "private": true,
@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "cross-env": "^7.0.3",
     "react": "^18.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
@@ -36,6 +37,6 @@
     ]
   },
   "devDependencies": {
-    "json-server" : "^0.17.0"
+    "json-server": "^0.17.0"
   }
 }

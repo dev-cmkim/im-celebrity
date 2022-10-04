@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { strings } from "../configs";
 import { CommonModal } from "./modal";
 import { DetailModal } from "./modal/DetailModal";
+const SERVER_URL = "https://im-celevrity.herokuapp.com"
 
 const UserList = () => {
   const [userCnt, setUserCnt] = useState(null);
@@ -31,8 +32,9 @@ const UserList = () => {
   useEffect(() => {
     async function getUsers() {
       const response = await axios.get(
-        "http://localhost:9000/projectRequests?isChosen=false"
+        `${SERVER_URL}/projectRequests?isChosen=false`
       );
+      console.log("server : ",SERVER_URL)
       setUserCnt(response.data.length);
       setUsers(response.data);
       //초깃값설정
@@ -42,7 +44,7 @@ const UserList = () => {
 
     async function getSelectedUsers() {
       const response = await axios.get(
-        "http://localhost:9000/projectRequests?isChosen=true"
+        `${SERVER_URL}/projectRequests?isChosen=true`
       );
       setSelectedUserCnt(response.data.length);
       setSelectedUsers(response.data);
@@ -83,7 +85,7 @@ const UserList = () => {
       async function patchUserId() {
         try {
           const response = await axios.patch(
-            `http://localhost:9000/projectRequests/${val}`,
+            `${SERVER_URL}/projectRequests/${val}`,
             {
               isChosen: "true",
             }
@@ -103,7 +105,7 @@ const UserList = () => {
       async function patchUserId() {
         try {
           const response = await axios.patch(
-            `http://localhost:9000/projectRequests/${val}`,
+            `${SERVER_URL}/projectRequests/${val}`,
             {
               isChosen: "false",
             }
