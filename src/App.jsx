@@ -3,7 +3,6 @@ import "./App.css";
 import { Project } from "./pages";
 
 const App = () => {
-  console.log("url :", process.env.PUBLIC_URL)
   return (
     <HashRouter basename={process.env.PUBLIC_URL}>
       <div className="App">

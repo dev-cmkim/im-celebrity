@@ -29,12 +29,12 @@ const UserList = () => {
 
   const [btnActive, setBtnActive] = useState(false);
 
+  console.log("server : ",SERVER_URL)
   useEffect(() => {
     async function getUsers() {
       const response = await axios.get(
         `${SERVER_URL}/projectRequests?isChosen=false`
       );
-      console.log("server : ",SERVER_URL)
       setUserCnt(response.data.length);
       setUsers(response.data);
       //초깃값설정
