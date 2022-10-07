@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { strings } from "../configs";
 import { CommonModal } from "./modal";
 import { DetailModal } from "./modal/DetailModal";
-const SERVER_URL = "https://im-celevrity.herokuapp.com"
 
 const UserList = () => {
   const [userCnt, setUserCnt] = useState(null);
@@ -29,11 +28,11 @@ const UserList = () => {
 
   const [btnActive, setBtnActive] = useState(false);
 
-  console.log("server : ",SERVER_URL)
+  console.log("server : ",process.env.PUBLIC_URL)
   useEffect(() => {
     async function getUsers() {
       const response = await axios.get(
-        `${SERVER_URL}/projectRequests?isChosen=false`
+        `${process.env.PUBLIC_URL}/projectRequests?isChosen=false`
       );
       setUserCnt(response.data.length);
       setUsers(response.data);
@@ -44,7 +43,7 @@ const UserList = () => {
 
     async function getSelectedUsers() {
       const response = await axios.get(
-        `${SERVER_URL}/projectRequests?isChosen=true`
+        `${process.env.PUBLIC_URL}/projectRequests?isChosen=true`
       );
       setSelectedUserCnt(response.data.length);
       setSelectedUsers(response.data);
@@ -85,7 +84,7 @@ const UserList = () => {
       async function patchUserId() {
         try {
           const response = await axios.patch(
-            `${SERVER_URL}/projectRequests/${val}`,
+            `${process.env.PUBLIC_URL}/projectRequests/${val}`,
             {
               isChosen: "true",
             }
@@ -105,7 +104,7 @@ const UserList = () => {
       async function patchUserId() {
         try {
           const response = await axios.patch(
-            `${SERVER_URL}/projectRequests/${val}`,
+            `${process.env.PUBLIC_URL}/projectRequests/${val}`,
             {
               isChosen: "false",
             }

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { strings } from "../../configs";
 import { CommonModal } from "./CommonModal";
-const SERVER_URL = "https://im-celevrity.herokuapp.com"
+const process.env.PUBLIC_URL = "https://im-celevrity.herokuapp.com"
 
 const DetailModal = (props) => {
   const { open, close, userId, userName, userNickName, activedA } = props;
@@ -16,7 +16,7 @@ const DetailModal = (props) => {
     if (open) {
       async function getBrandHistory() {
         const response = await axios.get(
-          `${SERVER_URL}/brandRequestsHistory?usrId=`,
+          `${process.env.PUBLIC_URL}/brandRequestsHistory?usrId=`,
           {
             params: {
               userId: userId,
@@ -52,7 +52,7 @@ const DetailModal = (props) => {
     async function patchUserId() {
       try {
         const response = await axios.patch(
-          `${SERVER_URL}/projectRequests/${prop}`,
+          `${process.env.PUBLIC_URL}/projectRequests/${prop}`,
           {
             isChosen: "true",
           }
@@ -70,7 +70,7 @@ const DetailModal = (props) => {
     async function patchUserId() {
       try {
         const response = await axios.patch(
-          `${SERVER_URL}/projectRequests/${prop}`,
+          `${process.env.PUBLIC_URL}/projectRequests/${prop}`,
           {
             isChosen: "false",
           }
