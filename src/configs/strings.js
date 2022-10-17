@@ -19,7 +19,7 @@ export const strings = {
     recommend: "추천수",
     today: "평균 투데이",
     cancelRate: "취소율",
-    snsUrl: "SNS 걔정",
+    snsUrl: "SNS 계정",
     brandRequestCounts: "내 브랜드 참여"
   },
   user: {
