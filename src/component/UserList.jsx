@@ -28,7 +28,7 @@ const UserList = () => {
 
   const [btnActive, setBtnActive] = useState(false);
 
-  console.log("server : ",process.env.PUBLIC_URL)
+  // console.log("server : ",process.env.PUBLIC_URL)
   useEffect(() => {
     async function getUsers() {
       const response = await axios.get(
@@ -52,28 +52,29 @@ const UserList = () => {
   }, []);
   //체크박스 아이디값, 체크여부 판별후 버튼 활성화
   const checkedItem = (id, isChecked) => {
-    setCheckedCnt(checkedCnt + 1);
     if (isChecked && checkedItems.size < 3) {
       checkedItems.add(id);
+      setCheckedCnt(checkedCnt + 1);
       setCheckedItems(checkedItems);
     } else if (!isChecked && checkedItems.has(id)) {
+      setCheckedCnt(checkedCnt - 1);
       checkedItems.delete(id);
       setCheckedItems(checkedItems);
     }
   };
-  const checkInputBox = ({target }) => {
+  const checkInputBox = ({target}) => {
     // input 1개이상 체크 되있을때 버튼활성화
     setIsChecked(!isChecked);
     checkedItem(target.id, target.checked);
-    if (checkedItems.size > 0) {
+    if (checkedItems.size > 0 ) {
       setBtnActive(true);
       setCheckedCnt(checkedItems.size);
-      target.parentElement.parentElement.style.backgroundColor = '#f7f7fa';
+    } else {
+      setBtnActive(!btnActive)
     }
     //3이상 체크 못하도록
     if (checkedCnt == 3 || checkedCnt >3) {
       target.checked = false;
-      target.parentElement.parentElement.style.backgroundColor = '#ffffff';
     }
   };
   //리뷰어 선정

@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { strings } from "../../configs";
 import { CommonModal } from "./CommonModal";
-const process.env.PUBLIC_URL = "https://im-celevrity.herokuapp.com"
 
 const DetailModal = (props) => {
   const { open, close, userId, userName, userNickName, activedA } = props;
