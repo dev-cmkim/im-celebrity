@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { strings } from "../configs";
 import { CommonModal } from "./modal";
 import { DetailModal } from "./modal/DetailModal";
-const SERVER_URL = "https://im-celevrity.herokuapp.com"
 
 const UserList = () => {
   const [userCnt, setUserCnt] = useState(null);
@@ -29,11 +28,11 @@ const UserList = () => {
 
   const [btnActive, setBtnActive] = useState(false);
 
-  console.log("server : ",SERVER_URL)
+  // console.log("server : ",process.env.PUBLIC_URL)
   useEffect(() => {
     async function getUsers() {
       const response = await axios.get(
-        `${SERVER_URL}/projectRequests?isChosen=false`
+        `${process.env.PUBLIC_URL}/projectRequests?isChosen=false`
       );
       setUserCnt(response.data.length);
       setUsers(response.data);
@@ -44,7 +43,7 @@ const UserList = () => {
 
     async function getSelectedUsers() {
       const response = await axios.get(
-        `${SERVER_URL}/projectRequests?isChosen=true`
+        `${process.env.PUBLIC_URL}/projectRequests?isChosen=true`
       );
       setSelectedUserCnt(response.data.length);
       setSelectedUsers(response.data);
@@ -53,28 +52,29 @@ const UserList = () => {
   }, []);
   //체크박스 아이디값, 체크여부 판별후 버튼 활성화
   const checkedItem = (id, isChecked) => {
-    setCheckedCnt(checkedCnt + 1);
     if (isChecked && checkedItems.size < 3) {
       checkedItems.add(id);
+      setCheckedCnt(checkedCnt + 1);
       setCheckedItems(checkedItems);
     } else if (!isChecked && checkedItems.has(id)) {
+      setCheckedCnt(checkedCnt - 1);
       checkedItems.delete(id);
       setCheckedItems(checkedItems);
     }
   };
-  const checkInputBox = ({target }) => {
+  const checkInputBox = ({target}) => {
     // input 1개이상 체크 되있을때 버튼활성화
     setIsChecked(!isChecked);
     checkedItem(target.id, target.checked);
-    if (checkedItems.size > 0) {
+    if (checkedItems.size > 0 ) {
       setBtnActive(true);
       setCheckedCnt(checkedItems.size);
-      target.parentElement.parentElement.style.backgroundColor = '#f7f7fa';
+    } else {
+      setBtnActive(!btnActive)
     }
     //3이상 체크 못하도록
     if (checkedCnt == 3 || checkedCnt >3) {
       target.checked = false;
-      target.parentElement.parentElement.style.backgroundColor = '#ffffff';
     }
   };
   //리뷰어 선정
@@ -85,7 +85,7 @@ const UserList = () => {
       async function patchUserId() {
         try {
           const response = await axios.patch(
-            `${SERVER_URL}/projectRequests/${val}`,
+            `${process.env.PUBLIC_URL}/projectRequests/${val}`,
             {
               isChosen: "true",
             }
@@ -105,7 +105,7 @@ const UserList = () => {
       async function patchUserId() {
         try {
           const response = await axios.patch(
-            `${SERVER_URL}/projectRequests/${val}`,
+            `${process.env.PUBLIC_URL}/projectRequests/${val}`,
             {
               isChosen: "false",
             }
