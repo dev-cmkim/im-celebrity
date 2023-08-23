@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db/static/css/main.0c29247b.css",
-    "main.js": "https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db/static/js/main.367f0577.js",
+    "main.js": "https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db/static/js/main.9ba6833d.js",
     "static/media/me.png": "https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db/static/media/me.aa7e93f9f2f505933b56.png",
     "static/media/star-regular.svg": "https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db/static/media/star-regular.a5dbeab4792cef4d9defe687ccd292cc.svg",
     "index.html": "https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db/index.html",
     "static/media/star-solid.svg": "https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db/static/media/star-solid.a6dc763d42bd03b280e55b40beb3f579.svg",
     "main.0c29247b.css.map": "https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db/static/css/main.0c29247b.css.map",
-    "main.367f0577.js.map": "https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db/static/js/main.367f0577.js.map"
+    "main.9ba6833d.js.map": "https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db/static/js/main.9ba6833d.js.map"
   },
   "entrypoints": [
     "static/css/main.0c29247b.css",
-    "static/js/main.367f0577.js"
+    "static/js/main.9ba6833d.js"
   ]
 }
