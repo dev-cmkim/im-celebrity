@@ -4,7 +4,7 @@ import { Project } from "./pages";
 
 const App = () => {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename="">
       <div className="App">
         <Switch>
           <Route exact path={process.env.PUBLIC_URL + "/"}>  
