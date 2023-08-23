@@ -1,10 +1,10 @@
-import {BrowserRouter, Route, Switch } from "react-router-dom";
+import {HashRouter, Route, Switch} from "react-router-dom";
 import "./App.css";
 import { Project } from "./pages";
 
 const App = () => {
   return (
-    <BrowserRouter basename="">
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Switch>
           <Route exact path={process.env.PUBLIC_URL + "/"}>  
@@ -12,7 +12,7 @@ const App = () => {
           </Route>
         </Switch>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
