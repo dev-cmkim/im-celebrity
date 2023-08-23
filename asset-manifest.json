@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "https://dev-cmkim.github.io/im-celebrity/static/css/main.0f0c2868.css",
-    "main.js": "https://dev-cmkim.github.io/im-celebrity/static/js/main.d509f39c.js",
+    "main.js": "https://dev-cmkim.github.io/im-celebrity/static/js/main.22f5499b.js",
     "static/media/me.png": "https://dev-cmkim.github.io/im-celebrity/static/media/me.aa7e93f9f2f505933b56.png",
     "static/media/star-regular.svg": "https://dev-cmkim.github.io/im-celebrity/static/media/star-regular.a5dbeab4792cef4d9defe687ccd292cc.svg",
     "index.html": "https://dev-cmkim.github.io/im-celebrity/index.html",
     "static/media/star-solid.svg": "https://dev-cmkim.github.io/im-celebrity/static/media/star-solid.a6dc763d42bd03b280e55b40beb3f579.svg",
     "main.0f0c2868.css.map": "https://dev-cmkim.github.io/im-celebrity/static/css/main.0f0c2868.css.map",
-    "main.d509f39c.js.map": "https://dev-cmkim.github.io/im-celebrity/static/js/main.d509f39c.js.map"
+    "main.22f5499b.js.map": "https://dev-cmkim.github.io/im-celebrity/static/js/main.22f5499b.js.map"
   },
   "entrypoints": [
     "static/css/main.0f0c2868.css",
-    "static/js/main.d509f39c.js"
+    "static/js/main.22f5499b.js"
   ]
 }
