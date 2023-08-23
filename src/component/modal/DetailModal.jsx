@@ -10,6 +10,8 @@ const DetailModal = (props) => {
   const [modalOpenC, setModalOpenC] = useState(false);
   const [modalContent, setModalContent] = useState("");
 
+  const API_URL = 'https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db'
+
   useEffect(() => {
     // 모달 open 일때만 api 호출하도록
     if (open) {
@@ -69,7 +71,7 @@ const DetailModal = (props) => {
     async function patchUserId() {
       try {
         const response = await axios.patch(
-          `${process.env.PUBLIC_URL}/projectRequests/${prop}`,
+          `${process.env.API_URL}/projectRequests/${prop}`,
           {
             isChosen: "false",
           }
