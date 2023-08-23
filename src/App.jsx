@@ -7,7 +7,7 @@ const App = () => {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Switch>
-          <Route exact path="/">
+          <Route exact path={process.env.PUBLIC_URL + "/"}>  
             <Project />
           </Route>
         </Switch>
