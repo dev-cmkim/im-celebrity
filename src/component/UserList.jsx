@@ -28,11 +28,13 @@ const UserList = () => {
 
   const [btnActive, setBtnActive] = useState(false);
 
+  const API_URL = 'https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db'
+
   // console.log("server : ",process.env.PUBLIC_URL)
   useEffect(() => {
     async function getUsers() {
       const response = await axios.get(
-        `${process.env.PUBLIC_URL}/projectRequests?isChosen=false`
+        `${API_URL}/projectRequests?isChosen=false`
       );
       setUserCnt(response.data.length);
       setUsers(response.data);
@@ -43,7 +45,7 @@ const UserList = () => {
 
     async function getSelectedUsers() {
       const response = await axios.get(
-        `${process.env.PUBLIC_URL}/projectRequests?isChosen=true`
+        `${API_URL}/projectRequests?isChosen=true`
       );
       setSelectedUserCnt(response.data.length);
       setSelectedUsers(response.data);
@@ -85,7 +87,7 @@ const UserList = () => {
       async function patchUserId() {
         try {
           const response = await axios.patch(
-            `${process.env.PUBLIC_URL}/projectRequests/${val}`,
+            `${API_URL}/projectRequests/${val}`,
             {
               isChosen: "true",
             }
@@ -105,7 +107,7 @@ const UserList = () => {
       async function patchUserId() {
         try {
           const response = await axios.patch(
-            `${process.env.PUBLIC_URL}/projectRequests/${val}`,
+            `${API_URL}/projectRequests/${val}`,
             {
               isChosen: "false",
             }
