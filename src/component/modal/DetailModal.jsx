@@ -10,7 +10,7 @@ const DetailModal = (props) => {
   const [modalOpenC, setModalOpenC] = useState(false);
   const [modalContent, setModalContent] = useState("");
 
-  const API_URL = 'https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db';
+  const API_URL = 'https://my-json-server.typicode.com/dev-cmkim/my-api'
 
   useEffect(() => {
     // 모달 open 일때만 api 호출하도록

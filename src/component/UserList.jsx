@@ -28,7 +28,7 @@ const UserList = () => {
 
   const [btnActive, setBtnActive] = useState(false);
 
-  const API_URL = 'https://my-json-server.typicode.com/dev-cmkim/im-celebrity/db'
+  const API_URL = 'https://my-json-server.typicode.com/dev-cmkim/my-api'
 
   // console.log("server : ",process.env.PUBLIC_URL)
   useEffect(() => {
