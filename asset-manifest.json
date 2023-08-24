@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "https://dev-cmkim.github.io/im-celebrity/static/css/main.0f0c2868.css",
-    "main.js": "https://dev-cmkim.github.io/im-celebrity/static/js/main.ac19cb6b.js",
-    "static/media/me.png": "https://dev-cmkim.github.io/im-celebrity/static/media/me.aa7e93f9f2f505933b56.png",
-    "static/media/star-regular.svg": "https://dev-cmkim.github.io/im-celebrity/static/media/star-regular.a5dbeab4792cef4d9defe687ccd292cc.svg",
-    "index.html": "https://dev-cmkim.github.io/im-celebrity/index.html",
-    "static/media/star-solid.svg": "https://dev-cmkim.github.io/im-celebrity/static/media/star-solid.a6dc763d42bd03b280e55b40beb3f579.svg",
-    "main.0f0c2868.css.map": "https://dev-cmkim.github.io/im-celebrity/static/css/main.0f0c2868.css.map",
-    "main.ac19cb6b.js.map": "https://dev-cmkim.github.io/im-celebrity/static/js/main.ac19cb6b.js.map"
+    "main.css": "/im-celebrity/static/css/main.03a171b1.css",
+    "main.js": "/im-celebrity/static/js/main.233e4d92.js",
+    "static/media/me.png": "/im-celebrity/static/media/me.aa7e93f9f2f505933b56.png",
+    "static/media/star-regular.svg": "/im-celebrity/static/media/star-regular.a5dbeab4792cef4d9defe687ccd292cc.svg",
+    "index.html": "/im-celebrity/index.html",
+    "static/media/star-solid.svg": "/im-celebrity/static/media/star-solid.a6dc763d42bd03b280e55b40beb3f579.svg",
+    "main.03a171b1.css.map": "/im-celebrity/static/css/main.03a171b1.css.map",
+    "main.233e4d92.js.map": "/im-celebrity/static/js/main.233e4d92.js.map"
   },
   "entrypoints": [
-    "static/css/main.0f0c2868.css",
-    "static/js/main.ac19cb6b.js"
+    "static/css/main.03a171b1.css",
+    "static/js/main.233e4d92.js"
   ]
 }
