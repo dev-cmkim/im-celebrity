@@ -180,11 +180,14 @@ const UserList = () => {
           {strings.user.selected}({selectedUserCnt})
         </div>
       </div>
+      <div className="desc-area">
+        <p className="desc">최대 3명까지 신청 가능합니다.</p>
+      </div>
       <div className="user_list_box">
         <ul>
           <li className="top_line">
             <div>
-              <input type="checkBox"></input>
+              <input type="checkBox" disabled></input>
             </div>
             <div>{strings.keyword.id}</div>
             <div>{strings.keyword.grade}</div>
